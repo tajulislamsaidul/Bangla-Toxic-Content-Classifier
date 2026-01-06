@@ -15,7 +15,7 @@ from reportlab.lib import colors
 
 # Configuration
 MODEL_PATH = r"./hf_bangla_multilabel_best"
-TEXT_COLUMN = 'text'  # CSV column containing text
+TEXT_COLUMN = 'text'
 
 LABEL_MAPPING = {
     "LABEL_0": "bully",
@@ -93,7 +93,6 @@ def wait_for_model(timeout=30):
     return True
 
 # Prediction utilities
-
 def detect_encoding(path):
     try:
         raw = open(path, 'rb').read()
@@ -101,7 +100,6 @@ def detect_encoding(path):
             enc = chardet.detect(raw).get('encoding')
             if enc:
                 return enc
-        # fallback guesses
         for enc in ('utf-8', 'utf-8-sig', 'utf-16', 'latin1', 'cp1252'):
             try:
                 raw.decode(enc)
@@ -148,11 +146,9 @@ class ModernApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Bangla Toxic Comment Classifier")
-        self.geometry('1200x800')  # Slightly larger default size
-        self.minsize(1000, 600)   # Minimum window size
+        self.geometry('1200x800')  
+        self.minsize(1000, 600)   
         self.configure(bg='#f6f7fb')
-        
-        # Make the window resizable
         self.rowconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
         self._create_styles()
@@ -164,11 +160,7 @@ class ModernApp(tk.Tk):
         self._build_ui()
         self.csv_results = None
         self.csv_df = None
-        
-        # Start status polling
         self.after(500, self._poll_model_status)
-        
-        # Bind resize event
         self.bind('<Configure>', self._on_resize)
 
     def _on_resize(self, event):
@@ -189,25 +181,21 @@ class ModernApp(tk.Tk):
         style.map('Accent.TButton', background=[('active', '#115293')])
 
     def _build_ui(self):
-        # Main container with grid layout for proper resizing
         main_container = tk.Frame(self, bg='#f6f7fb')
         main_container.grid(row=0, column=0, sticky='nsew')
         main_container.rowconfigure(0, weight=1)
         main_container.columnconfigure(1, weight=1)
 
-        # Sidebar - fixed width but stretches vertically
+        # Sidebar
         sidebar = tk.Frame(main_container, bg='#263238', width=220)
         sidebar.grid(row=0, column=0, sticky='ns')
-        sidebar.rowconfigure(1, weight=1)  # Make space between buttons and status stretchable
-        
-        # Prevent sidebar from shrinking too much
+        sidebar.rowconfigure(1, weight=1) 
         sidebar.grid_propagate(False)
 
         title = tk.Label(sidebar, text='Bangla Classifier', bg='#263238', fg='white', 
                         font=('Segoe UI', 14, 'bold'), anchor='w')
         title.pack(fill='x', padx=12, pady=18)
 
-        # Sidebar buttons container with flexible spacing
         button_container = tk.Frame(sidebar, bg='#263238')
         button_container.pack(fill='x', pady=10)
 
@@ -216,7 +204,6 @@ class ModernApp(tk.Tk):
         self.btn_csv = self._create_sidebar_button(button_container, 'CSV Upload', self.show_csv)
         self.btn_about = self._create_sidebar_button(button_container, 'About', self.show_about)
 
-        # Flexible spacer to push status to bottom
         spacer = tk.Frame(sidebar, bg='#263238', height=20)
         spacer.pack(fill='x', expand=True)
 
@@ -224,14 +211,12 @@ class ModernApp(tk.Tk):
         self.model_status = tk.Label(sidebar, textvariable=self.model_status_text, bg='#263238', 
                                    fg='white', font=('Segoe UI', 9), anchor='w')
         self.model_status.pack(fill='x', side='bottom', padx=12, pady=12)
-
-        # Main content area - stretches in both directions
         self.main = tk.Frame(main_container, bg='#f6f7fb')
         self.main.grid(row=0, column=1, sticky='nsew')
-        self.main.rowconfigure(1, weight=1)  # Content area stretches
+        self.main.rowconfigure(1, weight=1)  
         self.main.columnconfigure(0, weight=1)
 
-        # Header card - fixed height
+        # Header card
         header = tk.Frame(self.main, bg='#ffffff')
         header.grid(row=0, column=0, sticky='ew', padx=18, pady=18)
         header.columnconfigure(0, weight=1)
@@ -241,7 +226,6 @@ class ModernApp(tk.Tk):
         tk.Label(header, text='multi-label classification (bully, sexual, religious, threat, spam)', 
                 bg='white', fg='#6b7280', font=('Segoe UI', 10)).grid(row=1, column=0, sticky='w', padx=12, pady=(0,12))
 
-        # Content container - stretches to fill available space
         self.container = tk.Frame(self.main, bg='#f6f7fb')
         self.container.grid(row=1, column=0, sticky='nsew', padx=18, pady=(0,18))
         self.container.rowconfigure(0, weight=1)
@@ -273,7 +257,7 @@ class ModernApp(tk.Tk):
         elif _model_load_error:
             self.model_status_text.set(f"Model: error - check path")
         else:
-            # Still loading - update the dots animation
+            # Still loading & update the dots animation
             current = self.model_status_text.get()
             if current.endswith('...'):
                 self.model_status_text.set('Model: loading')
@@ -310,7 +294,7 @@ class ModernApp(tk.Tk):
             return False
         return True
     
-# Pages with auto-resizing
+# Pages auto resizing
 class HomePage(tk.Frame):
     def __init__(self, parent, app):
         super().__init__(parent, bg='#f6f7fb')
@@ -330,7 +314,7 @@ class HomePage(tk.Frame):
         tk.Label(card, text='Welcome', font=('Segoe UI', 16, 'bold'), bg='white'
                 ).grid(row=0, column=0, sticky='w', padx=12, pady=12)
         
-        # Content area that can scroll if needed
+        # Content area for scroll
         content_frame = tk.Frame(card, bg='white')
         content_frame.grid(row=1, column=0, sticky='nsew', padx=12, pady=12)
         content_frame.columnconfigure(0, weight=1)
@@ -339,7 +323,7 @@ class HomePage(tk.Frame):
                 bg='white', fg='#374151', font=('Segoe UI', 11)
                 ).grid(row=0, column=0, sticky='w', pady=4)
         
-        # Add model status info
+        # model status info
         status_frame = tk.Frame(content_frame, bg='white')
         status_frame.grid(row=1, column=0, sticky='w', pady=20)
         
@@ -353,7 +337,7 @@ class TextPage(tk.Frame):
         super().__init__(parent, bg='#f6f7fb')
         self.app = app
         
-        # Configure grid for proper resizing
+        # Configure grid resizing
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         
@@ -363,7 +347,7 @@ class TextPage(tk.Frame):
         card.rowconfigure(1, weight=1)  # Text area stretches
         card.columnconfigure(0, weight=1)
 
-        # Top controls - fixed height
+        # Top controls fixed height
         top_frame = tk.Frame(card, bg='white')
         top_frame.grid(row=0, column=0, sticky='ew', padx=12, pady=8)
         top_frame.columnconfigure(1, weight=1)  # Textbox will expand
@@ -371,7 +355,7 @@ class TextPage(tk.Frame):
         tk.Label(top_frame, text='Enter text (one per line for multiple):', bg='white', 
                 font=('Segoe UI', 11, 'bold')).grid(row=0, column=0, columnspan=3, sticky='w', pady=(0,8))
 
-        # Text area with scrollbar - stretches
+        # Text area with scrollbar 
         text_frame = tk.Frame(card, bg='white')
         text_frame.grid(row=1, column=0, sticky='nsew', padx=12, pady=(0,8))
         text_frame.rowconfigure(0, weight=1)
@@ -380,10 +364,10 @@ class TextPage(tk.Frame):
         self.textbox = scrolledtext.ScrolledText(text_frame, font=('Segoe UI', 11), wrap=tk.WORD)
         self.textbox.grid(row=0, column=0, sticky='nsew')
 
-        # Controls frame - fixed height
+        # Controls frame 
         controls = tk.Frame(card, bg='white')
         controls.grid(row=2, column=0, sticky='ew', padx=12, pady=6)
-        controls.columnconfigure(1, weight=1)  # Spacer between controls and status
+        controls.columnconfigure(1, weight=1)  
 
         tk.Label(controls, text='Threshold:', bg='white').grid(row=0, column=0, sticky='w')
         self.threshold = tk.Entry(controls, width=6)
@@ -402,7 +386,7 @@ class TextPage(tk.Frame):
         # Spacer to push status to the right
         controls.columnconfigure(4, weight=1)
 
-        # Results area - stretches to fill remaining space
+        # Results area
         self.results_area = tk.Frame(card, bg='white')
         self.results_area.grid(row=3, column=0, sticky='nsew', padx=12, pady=8)
         self.results_area.rowconfigure(0, weight=1)
@@ -495,7 +479,7 @@ class TextPage(tk.Frame):
         for w in self.results_area.winfo_children():
             w.destroy()
 
-        # Create a container for results that can scroll if needed
+        # Create a container for results that can scroll
         results_container = tk.Frame(self.results_area, bg='white')
         results_container.grid(row=0, column=0, sticky='nsew')
         results_container.rowconfigure(0, weight=1)
@@ -609,13 +593,13 @@ class CSVPage(tk.Frame):
         
         card = tk.Frame(self, bg='white')
         card.grid(row=0, column=0, sticky='nsew', padx=6, pady=6)
-        card.rowconfigure(1, weight=1)  # Results area stretches
+        card.rowconfigure(1, weight=1)  
         card.columnconfigure(0, weight=1)
 
         # Top controls
         top = tk.Frame(card, bg='white')
         top.grid(row=0, column=0, sticky='ew', pady=8, padx=12)
-        top.columnconfigure(1, weight=1)  # Path entry stretches
+        top.columnconfigure(1, weight=1)  
         
         tk.Label(top, text='Select CSV file (must contain a "text" column):', bg='white'
                 ).grid(row=0, column=0, sticky='w')
@@ -646,15 +630,12 @@ class CSVPage(tk.Frame):
         self.prog = ttk.Progressbar(settings_progress, orient='horizontal', mode='determinate')
         self.prog.grid(row=1, column=0, columnspan=5, sticky='ew', pady=8)
 
-        # Results area - stretches
+        # Results area 
         self.results_container = tk.Frame(card, bg='white')
         self.results_container.grid(row=2, column=0, sticky='nsew', padx=12, pady=8)
         self.results_container.rowconfigure(0, weight=1)
         self.results_container.columnconfigure(0, weight=1)
-        
-        # results list
         self.tree = None
-        
         # Update status indicator
         self.after(1000, self._update_status_indicator)
 
@@ -733,7 +714,6 @@ class CSVPage(tk.Frame):
                 self.prog['value'] = i + 1
                 self.update_idletasks()
                 
-            # merge out_rows into df
             for col in out_rows[0].keys():
                 df[col] = [r[col] for r in out_rows]
                 
@@ -749,14 +729,13 @@ class CSVPage(tk.Frame):
             self.analyze_btn.config(text='Analyze', state='normal', bg='#27ae60')
 
     def _show_table(self, results):
-        # Clear previous content
         for w in self.results_container.winfo_children():
             w.destroy()
             
-        # Create a frame for table and buttons
+        # Create frame for table and buttons
         main_frame = tk.Frame(self.results_container, bg='white')
         main_frame.grid(row=0, column=0, sticky='nsew')
-        main_frame.rowconfigure(0, weight=1)  # Table stretches
+        main_frame.rowconfigure(0, weight=1)
         main_frame.columnconfigure(0, weight=1)
 
         # Create table with scrollbars
@@ -768,7 +747,7 @@ class CSVPage(tk.Frame):
         cols = ['text'] + list(next(iter(results))['predictions'].keys())
         self.tree = ttk.Treeview(table_frame, columns=cols, show='headings')
         
-        # Configure columns with auto-width
+        # Configure columns with auto width
         for c in cols:
             self.tree.heading(c, text=c)
             self.tree.column(c, width=150, minwidth=100)
@@ -777,7 +756,6 @@ class CSVPage(tk.Frame):
         v_scroll = ttk.Scrollbar(table_frame, orient='vertical', command=self.tree.yview)
         h_scroll = ttk.Scrollbar(table_frame, orient='horizontal', command=self.tree.xview)
         self.tree.configure(yscrollcommand=v_scroll.set, xscrollcommand=h_scroll.set)
-        
         self.tree.grid(row=0, column=0, sticky='nsew')
         v_scroll.grid(row=0, column=1, sticky='ns')
         h_scroll.grid(row=1, column=0, sticky='ew')
@@ -838,38 +816,12 @@ class AboutPage(tk.Frame):
         
         tk.Label(content, text='About', font=('Segoe UI', 14, 'bold'), bg='white'
                 ).grid(row=0, column=0, sticky='w', pady=(0,10))
-        tk.Label(content, text=
-    "Bangla Toxic Content Classifier\n"
-    "Version: 1.0.0\n\n"
-
-    "AI-powered desktop application for detecting\n"
-    "toxic Bangla text using multi-label NLP.\n\n"
-
-    "Model Details:\n"
-    "• Transformer-based (HuggingFace)\n"
-    "• Multi-label classification\n"
-    "• Labels: Bully, Sexual, Religious, Threat, Spam\n"
-    "• Training samples: ~XX,000 Bangla texts\n"
-    "• Validation accuracy: ~XX%\n\n"
-
-    "System Info:\n"
-    "• Build date: 2025\n"
-    "• Inference: Offline (local model)\n"
-    "• Device: Auto-detect (CPU / GPU)\n\n"
-
-    "Author:\n"
-    "• Chatur\n"
-    "• Aspiring Machine Learning / NLP Engineer\n\n"
-
-    "License:\n"
-    "• MIT License\n\n"
-
-    "Built with Python, PyTorch & Tkinter",
+        tk.Label(content, text='This app uses local HuggingFace best model for multi label classification.', 
                 bg='white').grid(row=1, column=0, sticky='w', pady=2)
         tk.Label(content, text=f'Model path: {MODEL_PATH}', bg='white', 
                 font=('Segoe UI', 9)).grid(row=2, column=0, sticky='w', pady=5)
         
-# Export helper wrappers (same as before)
+# Export
 def export_to_pdf(data, filename, export_type='text'):
     if not filename:
         return
@@ -940,12 +892,9 @@ def export_multiple_to_excel(results, filename):
     except Exception as e:
         messagebox.showerror('Error', f'Failed to export Excel: {e}')
 
-# Run
 if __name__ == '__main__':
-    # Check if model path exists
     if not os.path.exists(MODEL_PATH):
         print(f"Warning: Model path '{MODEL_PATH}' does not exist.")
         print("Please update the MODEL_PATH variable in the code.")
-    
     app = ModernApp()
     app.mainloop()
