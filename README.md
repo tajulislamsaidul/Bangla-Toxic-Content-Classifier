@@ -26,28 +26,24 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
 
 <table>
   <tr>
-    <th>Main Window</th>
-    <th>Text Analysis</th>
-    <th>CSV Batch Analysis</th>
-    <th>Results View</th>
+    <th>Welcome </th>
+    <th>Results 1</th>
+    <th>Results 2</th>
   </tr>
   <tr>
-    <td><img src="screenshots/screen1_main.png" width="100%"></td>
-    <td><img src="screenshots/screen2_text.png" width="100%"></td>
-    <td><img src="screenshots/screen3_csv.png" width="100%"></td>
-    <td><img src="screenshots/screen4_results.png" width="100%"></td>
+    <td><img src="screenshots/Welcome.png" width="100%"></td>
+    <td><img src="screenshots/Single 1.png" width="100%"></td>
+    <td><img src="screenshots/Single 2.png" width="100%"></td>
   </tr>
   <tr>
-    <th>Threshold Settings</th>
-    <th>Progress Tracking</th>
-    <th>Export Options</th>
-    <th>About Page</th>
+    <th>Results 3</th>
+    <th>about</th>
+    <th>Report</th>
   </tr>
   <tr>
-    <td><img src="screenshots/screen5_threshold.png" width="100%"></td>
-    <td><img src="screenshots/screen6_progress.png" width="100%"></td>
-    <td><img src="screenshots/screen7_export.png" width="100%"></td>
-    <td><img src="screenshots/screen8_about.png" width="100%"></td>
+    <td><img src="screenshots/CSV.png" width="100%"></td>
+    <td><img src="screenshots/about.png" width="100%"></td>
+    <td><img src="screenshots/Report.png" width="100%"></td>
   </tr>
 </table>
 
