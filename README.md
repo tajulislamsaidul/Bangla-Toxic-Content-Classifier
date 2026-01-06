@@ -1,6 +1,6 @@
 # 🇧🇩 Bangla Toxic Content Classifier (GUI + NLP)
 
-A **desktop-based AI application** for detecting **toxic Bangla text** using a **multi-label transformer model**. This project demonstrates **end-to-end Machine Learning deployment**, from model loading to a user-friendly GUI with exportable reports.
+A **desktop based AI application** for detecting **toxic Bangla text** using a **multi label transformer model**. This project demonstrates **end to end Machine Learning deployment**, from model loading to a user friendly GUI with exportable reports.It's use cases Content moderation, social media analysis, Bangla NLP research, and educational machine learning projects.
 
 ---
 
