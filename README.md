@@ -4,13 +4,13 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
 
 ## 🚀 Features
 
-* ✅ Multi-label toxic content detection
+* ✅ Multi label toxic content detection
 * 🏷️ Labels: **Bully, Sexual, Religious, Threat, Spam**
-* 🖥️ Modern **Tkinter GUI** (desktop app)
+* 🖥️ Modern **Tkinter GUI**
 * 📄 Analyze **single text** or **bulk CSV files**
 * 📊 Confidence scores with threshold-based flagging
 * 📤 Export results to **PDF, Excel, CSV, Image**
-* ⚡ Offline inference (no API required)
+* ⚡ Offline inference
 * 🧵 Background threading for smooth UI
 
 ## 🧠 Tech Stack
@@ -18,9 +18,9 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
 * **Python**
 * **PyTorch**
 * **HuggingFace Transformers**
-* **Tkinter** (GUI)
+* **Tkinter**
 * **Pandas, Matplotlib**
-* **ReportLab** (PDF reports)
+* **ReportLab**
 
 ## 🖥️ Screenshots
 
