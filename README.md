@@ -52,16 +52,16 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
 ```
 Bangla-Toxic-Content-Classifier/
 │
-├── bangla_labeler_gui.py        # Main GUI application
-├── hf_bangla_multilabel_best/   # Trained HuggingFace model (local)
+├── bangla_labeler_gui.py        
+├── hf_bangla_multilabel_best/   
 │   ├── config.json
 │   ├── pytorch_model.bin
 │   └── tokenizer files
 │
-├── requirements.txt             # Python dependencies
-├── screenshots/                 # GUI screenshots (optional)
-├── sample_data/                 # Sample CSV/text files
-└── README.md                    # Project documentation
+├── requirements.txt             
+├── screenshots/                 
+├── sample_data/                 
+└── README.md                    
 ```
 
 ## ⚙️ Installation & Setup
