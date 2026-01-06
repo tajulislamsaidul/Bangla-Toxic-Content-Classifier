@@ -2,8 +2,6 @@
 
 A **desktop based AI application** for detecting **toxic Bangla text** using a **multi label transformer model**. This project demonstrates **end to end Machine Learning deployment**, from model loading to a user friendly GUI with exportable reports.It's use cases Content moderation, social media analysis, Bangla NLP research, and educational machine learning projects.
 
----
-
 ## 🚀 Features
 
 * ✅ Multi-label toxic content detection
@@ -15,8 +13,6 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
 * ⚡ Offline inference (no API required)
 * 🧵 Background threading for smooth UI
 
----
-
 ## 🧠 Tech Stack
 
 * **Python**
@@ -25,8 +21,6 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
 * **Tkinter** (GUI)
 * **Pandas, Matplotlib**
 * **ReportLab** (PDF reports)
-
----
 
 ## 📁 Project Structure
 
@@ -44,8 +38,6 @@ Bangla-Toxic-Content-Classifier/
 ├── sample_data/                 # Sample CSV/text files
 └── README.md                    # Project documentation
 ```
-
----
 
 ## ⚙️ Installation & Setup
 
@@ -78,8 +70,6 @@ python bangla_labeler_gui.py
 
 > ⚠️ Make sure the model folder `hf_bangla_multilabel_best` exists in the project root.
 
----
-
 ## 📊 CSV Format
 
 Your CSV file must contain a column named:
@@ -87,10 +77,7 @@ Your CSV file must contain a column named:
 ```
 text
 ```
-
 Each row should contain one Bangla text sample.
-
----
 
 ## 📤 Export Options
 
@@ -98,8 +85,6 @@ Each row should contain one Bangla text sample.
 * Excel (.xlsx) results
 * CSV output
 * Confidence score bar chart (PNG)
-
----
 
 ## 🎯 Use Cases
 
@@ -109,8 +94,6 @@ Each row should contain one Bangla text sample.
 * Educational ML projects
 * Offline AI tools
 
----
-
 ## 📌 Future Improvements
 
 * Model retraining with larger datasets
@@ -118,7 +101,6 @@ Each row should contain one Bangla text sample.
 * GPU performance optimization
 * Additional toxicity categories
 
----
 
 ## 👨‍💻 Author
 
@@ -126,8 +108,6 @@ Each row should contain one Bangla text sample.
 Machine Learning / NLP Engineer
 
 📫 Feel free to connect on LinkedIn or open an issue for suggestions.
-
----
 
 ## ⭐ If you find this project useful
 
