@@ -22,6 +22,49 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
 * **Pandas, Matplotlib**
 * **ReportLab** (PDF reports)
 
+## 🖥️ Screenshots
+
+<table>
+  <tr>
+    <th>Main Window</th>
+    <th>Text Analysis</th>
+    <th>CSV Batch Analysis</th>
+    <th>Results View</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/screen1_main.png" width="100%"></td>
+    <td><img src="screenshots/screen2_text.png" width="100%"></td>
+    <td><img src="screenshots/screen3_csv.png" width="100%"></td>
+    <td><img src="screenshots/screen4_results.png" width="100%"></td>
+  </tr>
+  <tr>
+    <th>Threshold Settings</th>
+    <th>Progress Tracking</th>
+    <th>Export Options</th>
+    <th>About Page</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/screen5_threshold.png" width="100%"></td>
+    <td><img src="screenshots/screen6_progress.png" width="100%"></td>
+    <td><img src="screenshots/screen7_export.png" width="100%"></td>
+    <td><img src="screenshots/screen8_about.png" width="100%"></td>
+  </tr>
+</table>
+
+## 📹 Video Walkthrough
+
+![Image](https://github.com/user-attachments/assets/a773a498-bba7-4f52-a4d8-0fa068d4dc25)
+
+Watch the full video tutorial to get started and explore all features
+
+## 🎥 Demo Video
+
+<p align="center">
+  <a href="https://youtu.be/YOUR_VIDEO_LINK">
+    <img src="https://img.shields.io/badge/▶%20Watch%20Demo%20Video-YouTube-red?style=for-the-badge">
+  </a>
+</p>
+
 ## 📁 Project Structure
 
 ```
@@ -112,3 +155,5 @@ Machine Learning / NLP Engineer
 ## ⭐ If you find this project useful
 
 Give it a **star ⭐** and share your feedback
+
+
