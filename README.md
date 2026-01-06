@@ -47,20 +47,6 @@ A **desktop based AI application** for detecting **toxic Bangla text** using a *
   </tr>
 </table>
 
-## 📹 Video Walkthrough
-
-![Image](https://github.com/user-attachments/assets/a773a498-bba7-4f52-a4d8-0fa068d4dc25)
-
-Watch the full video tutorial to get started and explore all features
-
-## 🎥 Demo Video
-
-<p align="center">
-  <a href="https://youtu.be/YOUR_VIDEO_LINK">
-    <img src="https://img.shields.io/badge/▶%20Watch%20Demo%20Video-YouTube-red?style=for-the-badge">
-  </a>
-</p>
-
 ## 📁 Project Structure
 
 ```
